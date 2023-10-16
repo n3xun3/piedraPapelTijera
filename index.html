@@ -15,8 +15,8 @@
 
 		<article>
 			<label for="nombre">Introduce tu nombre:</label>	
-			<input type="text" name="nombre" id="cajaNombre" required minlength="1" maxlength="10" size="10">
-			<button id="botonJugar" >Jugar</button>
+			<input type="text" name="nombre" id="inputName" required minlength="1" maxlength="10" size="10">
+			<button type="button" id="playButton" >Jugar</button>
 		</article>
 		<hr>
 
@@ -32,7 +32,7 @@
 
 		<article id="resultado">
 			<div>
-				<label><input type="text" id="caja" maxlength="10" size="10"></label>
+				<label><input type="text" id="inputName" maxlength="10" size="10"></label>
 				<label>ORDENADOR:</label>
 			</div>
 			<div>			
@@ -45,21 +45,21 @@
 
 			</div>
  			<div>
- 				<label><input type="text" class="cajaCentro"  size="10"></label>
- 				<label><input type="text" class="cajaCentro"  size="10"></label>
+ 				<label><div id="cajaIzquierda"  size="10"></label>
+ 				<label><div id="cajaDerecha"  size="10"></label>
  			</div>
-			<div>
-				<button type="reset">RESET</button>
-			</div>
 		</article>
+		<div>
+			<button type="reset">RESET</button>
+		</div>
 
-		<article class="botones" id="jugador">
+		<article class="botones" id="player">
 			<div>JUGADOR</div>
-			<div><button  class="botonJugador" id="piedra"><img src="imagenes/piedra.png" width="100px"></button>PIEDRA</div>
-			<div><button class="botonJugador" id="papel"><img src="imagenes/papel.png" id="ruta" width="100px"></button>PAPEL</div>
-			<div><button class="botonJugador" id="tijeras"><img src="imagenes/tijeras.png" width="100px"></button>TIJERAS</div>
-			<div><button class="botonJugador" id="lagarto"><img src="imagenes/lagarto.png" width="100px"></button>LAGARTO</div>
-			<div><button class="botonJugador" id="spock"><img src="imagenes/spock.png" width="100px"></button>SPOCK</div>
+			<div><button  class="botonJugador" id="piedra"><img id="piedra" src="imagenes/piedra.png" width="100px"></button>PIEDRA</div>
+			<div><button class="botonJugador" id="papel"><img id="papel" src="imagenes/papel.png" id="ruta" width="100px"></button>PAPEL</div>
+			<div><button class="botonJugador" id="tijeras"><img id="tijeras" src="imagenes/tijeras.png" width="100px"></button>TIJERAS</div>
+			<div><button class="botonJugador" id="lagarto"><img id="lagarto" src="imagenes/lagarto.png" width="100px"></button>LAGARTO</div>
+			<div><button class="botonJugador" id="spock"><img id="spock" src="imagenes/spock.png" width="100px"></button>SPOCK</div>
 				
 			
 		</article>		

@@ -1,222 +1,88 @@
-let cajaNombre, botonJugar, botonSeleccion, cajaNombreJugador,cajaRespuesta
-,cajaResultado,cajaPuntuacion,seleccionJugador,jugador,ordenador,identificador
-caja,cajaResolucion,solucion,opciones;
-let parentId = "";
-let rutas = ["imagenes/piedra.png", "imagenes/papel.png","imagenes/tijeras.png", "imagenes/lagarto.png", "imagenes/spock.png"]
+let inputName,
+    botonJugar,
+    buttonSelected,
+    inputNamePlayer,
+    inputResponse,
+    inputResult,
+    inputPointer,
+    selectPlayer,
+    player,
+    ordenador,
+    identificador,
+    caja,
+    inputResolution,
+    solucion,
+    opciones,
+	parentId = "",
+	rutas = ["imagenes/piedra.png", "imagenes/papel.png","imagenes/tijeras.png", "imagenes/lagarto.png", "imagenes/spock.png"];
 
 //1º Al cargar la pantalla queremos que que se cargen todas las imagenes, botones e inputs (parte visual)
-//2º Al introducir el nombre y click boton jugar se deberián de desbloquear las imagenes y poder jugar y pintar el nombre del jugador en pantalla.
+//2º Al introducir el nombre y click boton jugar se deberián de desbloquear las imagenes y poder jugar y pintar el nombre del player en pantalla.✅
 //3ª Al clicar en el dibujo se debe marcar, pintar en resultado y al mismo tiempo lanzar random del PC y pintar lo que salgas
 //4º Pintar el resultado de esa ronda GANADO, EMPATE, PERDIDO
 //5º cada vicrtoria se debe sumar en un contador para controlar el resultado ( se peude poner un máximo y al llegar Poner VICTORIA y resetear auto(opcional))
 //6º Boton reset reseteara todos los inputs
 
-function activarBotonJugar(){
-		botonJugar.disabled = false;
-		cajaNombreJugador.value = cajaNombre.value;
-		
-}
-
-function escribirNombre(){
-	let nombre = cajaNombre.value;
-	caja.value = cajaNombre.value;
-	if(nombre != ""){
-		activarBotonJugar();
-	}
-}
-
-function aumentarTamaño(){
-	let img = document.getElementById("jugador");
-	function aumentarTamaño(){
-		
-		img.width = "180px";
-		img.height = "auto";
-
-	}
-	
-}
-
-function seleccionar(){
-	let jugador = document.getElementById("jugador");
-
-	jugador.addEventListener("click", clickId,true);
-}
-
-function clickId() {
-	let eleccion = event.target;
-//eleccion es la etiqueta
-
-	parentId = event.target.parentNode.id;
-	//parentId me da el nombre de la opcion elegida
-
-	//añadir imagen seleccionada
-	let ruta = eleccion.getAttribute("src");
-
-	const contenedor = document.getElementById("humano");
-
-	let img = document.createElement("img");
-	img.width = "100";
-	img.src = ruta;
-	
-	contenedor.appendChild(img);
-	
-	event.stopPropagation();
-}
-
-
-function seleccionOrdenador(){
-	let opciones  = ["piedra", "papel", "tijeras", "lagarto", "spock"];
-	let aleatorio = opciones[Math.floor(Math.random() * opciones.length)];
-
-	if(aleatorio === "piedra"){
-		ruta = "imagenes/piedra.png";
-	}else if(aleatorio === "papel"){
-		ruta = "imagenes/papel.png";
-	}else if(aleatorio === "tijeras"){
-		ruta = "imagenes/tijeras.png";
-	}else if(aleatorio === "lagarto"){
-		ruta = "imagenes/lagarto.png";
-	}else if(aleatorio === "spock"){
-		ruta = "imagenes/spock.png";
-	}
-}
-
-function juego(){
-		if(aleatorio === "piedra"){
-			if(parentId === aleatorio){
-				cajaResolucion.value = "EMPATE";
-			}else if(parentId === "papel"){
-				solucion = document.getElementById("resolucion"); 
-				solucion.innerText += "GANASTE";
-			}else if(parentId === "tijeras"){
-				solucion = document.getElementById("resolucion"); 
-				solucion.innerText +="PERDISTE";
-			}else if(parentId.value === "lagarto"){
-				solucion = document.getElementById("resolucion"); 
-				solucion.innerText += "PERDISTE";
-			}else if(parentId === "spock"){
-				solucion = document.getElementById("resolucion"); 
-				solucion.innerText += "GANASTE";
-			}
-		}
-
-		if(aleatorio === "papel"){
-			if(parentId === aleatorio){
-				cajaResolucion.value = "EMPATE";
-			}else if(parentId === "piedra"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-			}else if(parentId === "tijeras"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-			}else if(parentId.value === "lagarto"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-			}else if(parentId === "spock"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";	
-			}
-		}
-
-		if(aleatorio === "tijeras"){
-			if(parentId === aleatorio){
-				solucion.innerText += "EMPATE";
-			}else if(parentId === "piedra"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-			}else if(parentId === "papel"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-			}else if(parentId.value === "lagarto"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-			}else if(parentId === "spock"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-			}
-		}
-
-		if(aleatorio === "lagarto"){
-			if(parentId === aleatorio){
-				solucion.innerText += "EMPATE";
-			}else if(parentId === "papel"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-				
-			}else if(parentId === "tijeras"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-				
-			}else if(parentId.value === "piedra"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-				
-			}else if(parentId === "spock"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-				
-			}
-		}
-
-		if(aleatorio === "spock"){
-			if(parentId === aleatorio){
-				cajaResolucion.value = "EMPATE";
-			}else if(parentId === "papel"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-				
-			}else if(parentId === "tijeras"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-				
-			}else if(parentId.value === "lagarto"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "GANASTE";
-				
-			}else if(parentId === "piedra"){
-				solucion = document.getElementById("resolucion");
-				solucion.innerText += "PERDISTE";
-				 
-			}
-		}
-}
-
-
-//añadir imagen generada aleatoria
-let contenedor1 = document.getElementById("ordenadorOpcion");
-let img1 = document.createElement("img");
-img1.width = "100";
-img1.src = ruta;
-
-contenedor1.appendChild(img1);
-event.stopPropagation();
-
-
 function inicializarVariables(){
-	cajaNombre = document.getElementById("cajaNombre");
-	botonJugar = document.getElementById("botonJugar");
-	botonSeleccion = document.getElementsByClassName("botonJugador");
-	cajaNombreJugador = document.getElementById("cajaNombreJugador");
-	seleccionJugador = document.getElementById("seleccion");
-	cajaResultado = document.getElementById("cajaResultado");
-	cajaRespuesta = document.getElementById("cajaRespuesta");
-	cajaPuntuacion = document.getElementById("cajaPuntuacion");
-	jugador = document.getElementById("jugador");
-	caja = document.getElementById("caja");
-	cajaResolucion = document.getElementById("resolucion");
+	inputName = document.getElementById("inputName");
+	buttonSelected = document.getElementsByClassName("botonJugador");
+	inputNamePlayer = document.getElementById("inputNamePlayer");
+	selectPlayer = document.getElementById("select");
+	inputResult = document.getElementById("inputResult");
+	inputResponse = document.getElementById("inputResponse");
+	inputPointer = document.getElementById("inputPointer");
+	player = document.getElementById("player");
+	inputName = document.getElementById("inputName");
+	inputResolution = document.getElementById("resolucion");
 }
-
+// Escribimos nombre del Jugador en centro de la pantalla
+function writeName(){
+	 inputName.value = inputName.value;
+}
+// Listeners que queremos cargar al cargar la pagina
 function setListeners(){
-	cajaNombre.addEventListener("input", escribirNombre);
-	botonJugar.addEventListener("click", seleccionOrdenador);
-	jugador.addEventListener("click", seleccionar);
-	jugador.addEventListener("mouseover",aumentarTamaño);
-	
+	playButton = document.getElementById("playButton");
+	playButton.addEventListener("click", writeName);
+}
+// Resetamos imagen para volver hacer click en otra y seguir jugando
+function resetImage(imagenDiv){
+	imagenDiv.innerHTML = '';
 }
 
+// Input donde introducimos el nombre del player
+window.addEventListener("input", ()=>{
+	inputName = document.getElementById("inputName");
+	console.log()
+	if(inputName.value.length > 0){
+		playButton.disabled = false;
+	} else {
+		playButton.disabled = true;
+	}
+});
+// Al cargar la pagina
 window.addEventListener("load",()=>{
-	inicializarVariables();
+	// inicializarVariables();
 	setListeners();
 	
-	botonJugar.disabled = true;
+	playButton.disabled = true;
+});
+
+window.addEventListener("click", (e)=> {
+	const buttonPiedra = document.getElementById(e.target.id);
+	const imagenDiv = document.getElementById('cajaIzquierda');
+	// Obtiene la imagen del botón
+    const imagen = buttonPiedra.querySelector('img');
+
+    // Crea una copia de la imagen
+    const imagenCopia = imagen.cloneNode(true);
+
+    // Limpia el contenido actual del segundo div
+    imagenDiv.innerHTML = '';
+
+    // Agrega la copia de la imagen al segundo div
+    imagenDiv.appendChild(imagenCopia);
+	setTimeout(() => {
+		resetImage(imagenDiv);
+	}, 5000);
+	
 });
