@@ -7,7 +7,7 @@ let inputName,
     inputPointer,
     selectPlayer,
     player,
-    ordenador,
+    computer,
     identificador,
     caja,
     inputResolution,
@@ -15,11 +15,53 @@ let inputName,
     opciones,
 	parentId = "",
 	rutas = ["imagenes/piedra.png", "imagenes/papel.png","imagenes/tijeras.png", "imagenes/lagarto.png", "imagenes/spock.png"];
+// Obtiene las selecciones del usuario y del sistema
+const usuario = "";
+const sistema = "";
 
-//1º Al cargar la pantalla queremos que que se cargen todas las imagenes, botones e inputs (parte visual)
+// Definir un objeto que mapea las combinaciones y resultados
+const resultados = {
+  piedra: {
+    piedra: "EMPATE",
+    papel: "PERDISTE",
+    tijeras: "GANASTE",
+    lagarto: "GANASTE",
+    spock: "PERDISTE",
+  },
+  papel: {
+    piedra: "GANASTE",
+    papel: "EMPATE",
+    tijeras: "PERDISTE",
+    lagarto: "PERDISTE",
+    spock: "GANASTE",
+  },
+  tijeras: {
+    piedra: "PERDISTE",
+    papel: "GANASTE",
+    tijeras: "EMPATE",
+    lagarto: "GANASTE",
+    spock: "PERDISTE",
+  },
+  lagarto: {
+    piedra: "PERDISTE",
+    papel: "GANASTE",
+    tijeras: "PERDISTE",
+    lagarto: "EMPATE",
+    spock: "GANASTE",
+  },
+  spock: {
+    piedra: "GANASTE",
+    papel: "PERDISTE",
+    tijeras: "GANASTE",
+    lagarto: "PERDISTE",
+    spock: "EMPATE",
+  },
+};
+
+//1º Al cargar la pantalla queremos que que se cargen todas las imagenes, botones e inputs (parte visual)✅
 //2º Al introducir el nombre y click boton jugar se deberián de desbloquear las imagenes y poder jugar y pintar el nombre del player en pantalla.✅
 //3ª Al clicar en el dibujo se debe marcar, pintar en resultado y al mismo tiempo lanzar random del PC y pintar lo que salgas
-//4º Pintar el resultado de esa ronda GANADO, EMPATE, PERDIDO
+//4º Pintar el resultado de esa ronda GANADO, EMPATE, PERDIDO✅
 //5º cada vicrtoria se debe sumar en un contador para controlar el resultado ( se peude poner un máximo y al llegar Poner VICTORIA y resetear auto(opcional))
 //6º Boton reset reseteara todos los inputs
 
@@ -32,57 +74,89 @@ function inicializarVariables(){
 	inputResponse = document.getElementById("inputResponse");
 	inputPointer = document.getElementById("inputPointer");
 	player = document.getElementById("player");
-	inputNameCenter = document.getElementById("inputNameCenter");
+	labelName = document.getElementById("labelName");
 	inputResolution = document.getElementById("resolucion");
+	result = document.getElementById("result");
+	computer = document.getElementById("computer");
+	resetPlay = document.getElementById("resetPlay");
 }
+
 // Escribimos nombre del Jugador en centro de la pantalla
 function writeName(){
-	inputNameCenter.value = inputName.value;
+	labelName.textContent  = inputName.value;
+	player.style.display = "block";
+	result.style.display = "block";
+	computer.style.display = "block";
+	resetPlay.style.display = "block";
+	playButton.style.display = "none";
 }
+
 // Listeners que queremos cargar al cargar la pagina
 function setListeners(){
 	playButton = document.getElementById("playButton");
 	playButton.addEventListener("click", writeName);
 }
+
 // Resetamos imagen para volver hacer click en otra y seguir jugando
-function resetImage(imagenDiv){
+function resetImage(imagenDiv, sistema, usuario){
+	// Obtener el resultado y mostrarlo en el elemento "resolucion"
+	const resultado = resultados[sistema][usuario];
+	const solucion = document.getElementById("resolucion");
+
+	solucion.innerText += resultado;
 	imagenDiv.innerHTML = '';
 }
 
 // Input donde introducimos el nombre del player
 window.addEventListener("input", ()=>{
 	inputName = document.getElementById("inputName");
-	console.log()
 	if(inputName.value.length > 0){
 		playButton.disabled = false;
 	} else {
 		playButton.disabled = true;
 	}
 });
+
 // Al cargar la pagina
 window.addEventListener("load",()=>{
-	// inicializarVariables();
+	inicializarVariables();
 	setListeners();
-	
+	player.style.display = "none";
+	result.style.display = "none";
+	computer.style.display = "none";
 	playButton.disabled = true;
+	resetPlay.style.display = "none";
 });
 
 window.addEventListener("click", (e)=> {
-	const ButtonSelectPlayer = document.getElementById(e.target.id);
-	const imagenDiv = document.getElementById('cajaIzquierda');
-	// Obtiene la imagen del botón
-    const imagen = ButtonSelectPlayer.querySelector('img');
+	let imagenCopia;
+	console.log(e.target);
+	if(e.target.localName === "img"){
+		const ButtonSelectPlayer = document.getElementById(e.target.id);
+		const imagenDiv = document.getElementById('cajaIzquierda');
+		// Obtiene la imagen del botón
+    	const imagen = ButtonSelectPlayer.querySelector('img');
 
-    // Crea una copia de la imagen
-    const imagenCopia = imagen.cloneNode(true);
+    	// Crea una copia de la imagen
+		if(imagen){
+			imagenCopia = imagen.cloneNode(true);
+			// Limpia el contenido actual del segundo div
+			imagenDiv.innerHTML = '';
+	
+			// Agrega la copia de la imagen al segundo div
+			imagenDiv.appendChild(imagenCopia);
+		
+			setTimeout(() => {
+				resetImage(imagenDiv,e.target.id,"piedra");
+			}, 5000);
+		}
+	
+	}
 
-    // Limpia el contenido actual del segundo div
-    imagenDiv.innerHTML = '';
+	if(e.target.id === "resetPlay"){
+		// reset pagina y volvermos al inicio
+		location.reload();
+	}
 
-    // Agrega la copia de la imagen al segundo div
-    imagenDiv.appendChild(imagenCopia);
-	setTimeout(() => {
-		resetImage(imagenDiv);
-	}, 5000);
 	
 });

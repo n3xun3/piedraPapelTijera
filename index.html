@@ -1,69 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Rock, Paper,Scissor, Lizard, Spock</title>
-	<link rel="stylesheet" href="css/estilos.css">
-	<script defer src="js/script.js"></script>
-	<!-- defer, espera a que cargue el dom para ejecutar el script-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rock, Paper, Scissors, Lizard, Spock</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script defer src="js/script.js"></script>
+    <!-- defer, espera a que cargue el DOM para ejecutar el script -->
 </head>
 <body>
-	<header>Piedra, Papel, Tijera, Lagarto, Spock</header>
+    <header>
+        <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+    </header>
 
-	<section>
+    <section class="container">
 
-		<article>
-			<label for="nombre">Introduce tu nombre:</label>	
-			<input type="text" name="nombre" id="inputName" required minlength="1" maxlength="10" size="10">
-			<button type="button" id="playButton" >Jugar</button>
-		</article>
-		<hr>
+        <article>
+            <label for="nombre">Introduce tu nombre:</label>
+            <input type="text" name="nombre" id="inputName" required minlength="1" maxlength="10" size="10">
+            <button type="button" id="playButton">Jugar</button>
+            <button type="button" id="resetPlay">RESET</button>
+        </article>
+        <hr>
 
-		<article class="botones" id="ordenador">
-			<div>ORDENADOR</div>
-			<div><button class="botonOrdenador" id="piedra"><img src="imagenes/piedra.png" width="100px"></button>PIEDRA</div>
-			<div><button class="botonOrdenador" id="papel"><img src="imagenes/papel.png" width="100px"></button>PAPEL</div>
-			<div><button class="botonOrdenador" id="tijeras"><img src="imagenes/tijeras.png" width="100px"></button>TIJERAS</div>
-			<div><button class="botonOrdenador" id="lagarto"><img src="imagenes/lagarto.png" width="100px"></button>LAGARTO</div>
-			<div><button class="botonOrdenador" id="spock"><img src="imagenes/spock.png" width="100px"></button>SPOCK</div>
-			
-		</article>
+        <article class="botones" id="computer">
+            <div>ORDENADOR</div>
+            <div><img id="piedra" src="imagenes/piedra.png" width="100px"></div>
+            <div><img id="papel" src="imagenes/papel.png" width="100px"></div>
+            <div><img id="tijeras" src="imagenes/tijeras.png" width="100px"></div>
+            <div><img id="lagarto" src="imagenes/lagarto.png" width="100px"></div>
+            <div><img id="spock" src="imagenes/spock.png" width="100px"></div>
 
-		<article id="resultado">
-			<div>
-				<label><input type="text" id="inputNameCenter" maxlength="10" size="10"></label>
-				<label>ORDENADOR:</label>
-			</div>
-			<div>			
-				<label><button class="boton" id="humano"></button></label>
-				<label><button class="boton" id="ordenadorOpcion"></button></label>
-			</div>	
-				
-			<div>
-				<p id="resolucion">RESULTADO: </p>
+        </article>
 
-			</div>
- 			<div>
- 				<label><div id="cajaIzquierda"  size="10"></label>
- 				<label><div id="cajaDerecha"  size="10"></label>
- 			</div>
-		</article>
-		<div>
-			<button type="reset">RESET</button>
-		</div>
+        <article id="result">
+            <div>
+                <label id="labelName"></label>
+                <label id="labelComputer">Ordenador</label>
+            </div>
+            <div>
+                <label><button class="boton" id="humano"></button></label>
+                <label><button class="boton" id="ordenadorOpcion"></button></label>
+            </div>
 
-		<article class="botones" id="player">
-			<div>JUGADOR</div>
-			<div><button  class="botonJugador" id="piedra"><img id="piedra" src="imagenes/piedra.png" width="100px"></button>PIEDRA</div>
-			<div><button class="botonJugador" id="papel"><img id="papel" src="imagenes/papel.png" id="ruta" width="100px"></button>PAPEL</div>
-			<div><button class="botonJugador" id="tijeras"><img id="tijeras" src="imagenes/tijeras.png" width="100px"></button>TIJERAS</div>
-			<div><button class="botonJugador" id="lagarto"><img id="lagarto" src="imagenes/lagarto.png" width="100px"></button>LAGARTO</div>
-			<div><button class="botonJugador" id="spock"><img id="spock" src="imagenes/spock.png" width="100px"></button>SPOCK</div>
-				
-			
-		</article>		
+            <div>
+                <p id="resolucion">RESULTADO: </p>
+            </div>
+            <div>
+                <label><div id="cajaIzquierda" size="10"></div></label>
+                <label><div id="cajaDerecha" size="10"></div></label>
+            </div>
+        </article>
 
-	</section>
+        <article class="botones" id="player">
+            <div>JUGADOR</div>
+            <div><img id="piedra" src="imagenes/piedra.png" width="100px"></div>
+            <div><img id="papel" src="imagenes/papel.png" width="100px"></div>
+            <div><img id="tijeras" src="imagenes/tijeras.png" width="100px"></div>
+            <div><img id="lagarto" src="imagenes/lagarto.png" width="100px"></div>
+            <div><img id="spock" src="imagenes/spock.png" width="100px"></div>
+        </article>
+    </section>
 </body>
 </html>
