@@ -32,12 +32,12 @@ function inicializarVariables(){
 	inputResponse = document.getElementById("inputResponse");
 	inputPointer = document.getElementById("inputPointer");
 	player = document.getElementById("player");
-	inputName = document.getElementById("inputName");
+	inputNameCenter = document.getElementById("inputNameCenter");
 	inputResolution = document.getElementById("resolucion");
 }
 // Escribimos nombre del Jugador en centro de la pantalla
 function writeName(){
-	 inputName.value = inputName.value;
+	inputNameCenter.value = inputName.value;
 }
 // Listeners que queremos cargar al cargar la pagina
 function setListeners(){
@@ -68,10 +68,10 @@ window.addEventListener("load",()=>{
 });
 
 window.addEventListener("click", (e)=> {
-	const buttonPiedra = document.getElementById(e.target.id);
+	const ButtonSelectPlayer = document.getElementById(e.target.id);
 	const imagenDiv = document.getElementById('cajaIzquierda');
 	// Obtiene la imagen del botón
-    const imagen = buttonPiedra.querySelector('img');
+    const imagen = ButtonSelectPlayer.querySelector('img');
 
     // Crea una copia de la imagen
     const imagenCopia = imagen.cloneNode(true);
