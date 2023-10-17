@@ -1,5 +1,4 @@
 let inputName,
-    botonJugar,
     buttonSelected,
     inputNamePlayer,
     inputResponse,
@@ -8,12 +7,8 @@ let inputName,
     selectPlayer,
     player,
     computer,
-    identificador,
-    caja,
     inputResolution,
     solucion,
-    opciones,
-	parentId = "",
 	rutas = ["imagenes/piedra.png", "imagenes/papel.png","imagenes/tijeras.png", "imagenes/lagarto.png", "imagenes/spock.png"];
 // Obtiene las selecciones del usuario y del sistema
 const usuario = "";
