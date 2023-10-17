@@ -1,65 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rock, Paper, Scissors, Lizard, Spock</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
     <script defer src="js/script.js"></script>
-    <!-- defer, espera a que cargue el DOM para ejecutar el script -->
+    <title>Document</title>
 </head>
 <body>
     <header>
         <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+        <label for="nombre">Introduce tu nombre:</label>
+        <input type="text" name="nombre" id="inputName" required minlength="1" maxlength="10" size="10">
+        <button type="button" id="playButton">Jugar</button>
     </header>
 
-    <section class="container">
+    <main>
+        <div class="column" id="column1">
+            <h2>Jugador</h2>
+            <div><img class="image" id="piedra" src="imagenes/piedra.png"></div>
+            <div><img class="image" id="papel" src="imagenes/papel.png"></div>
+            <div><img class="image" id="tijeras" src="imagenes/tijeras.png"></div>
+            <div><img class="image" id="lagarto" src="imagenes/lagarto.png"></div>
+            <div><img class="image" id="spock" src="imagenes/spock.png"></div>
 
-        <article>
-            <label for="nombre">Introduce tu nombre:</label>
-            <input type="text" name="nombre" id="inputName" required minlength="1" maxlength="10" size="10">
-            <button type="button" id="playButton">Jugar</button>
-            <button type="button" id="resetPlay">RESET</button>
-        </article>
-        <hr>
+        </div>
 
-        <article class="botones" id="computer">
-            <div>ORDENADOR</div>
-            <div><img id="piedra" src="imagenes/piedra.png" width="100px"></div>
-            <div><img id="papel" src="imagenes/papel.png" width="100px"></div>
-            <div><img id="tijeras" src="imagenes/tijeras.png" width="100px"></div>
-            <div><img id="lagarto" src="imagenes/lagarto.png" width="100px"></div>
-            <div><img id="spock" src="imagenes/spock.png" width="100px"></div>
+        <div class="column" id="column2">
+            <h2 id="labelName">Columna 2</h2> <button type="button" id="resetPlay">RESET</button>
+            <label><button class="image" id="humano"></button></label>
+            <label><button class="image" id="ordenadorOpcion"></button></label>
+            <h3 id="resolucion">RESULTADO</h3>
+        </div>
 
-        </article>
-
-        <article id="result">
-            <div>
-                <label id="labelName"></label>
-                <label id="labelComputer">Ordenador</label>
-            </div>
-            <div>
-                <label><button class="boton" id="humano"></button></label>
-                <label><button class="boton" id="ordenadorOpcion"></button></label>
-            </div>
-
-            <div>
-                <p id="resolucion">RESULTADO: </p>
-            </div>
-            <div>
-                <label><div id="cajaIzquierda" size="10"></div></label>
-                <label><div id="cajaDerecha" size="10"></div></label>
-            </div>
-        </article>
-
-        <article class="botones" id="player">
-            <div>JUGADOR</div>
-            <div><img id="piedra" src="imagenes/piedra.png" width="100px"></div>
-            <div><img id="papel" src="imagenes/papel.png" width="100px"></div>
-            <div><img id="tijeras" src="imagenes/tijeras.png" width="100px"></div>
-            <div><img id="lagarto" src="imagenes/lagarto.png" width="100px"></div>
-            <div><img id="spock" src="imagenes/spock.png" width="100px"></div>
-        </article>
-    </section>
+        <div class="column" id="column3">
+            <h2>Ordenador</h2>
+            <div><img class="image" id="piedraC" src="imagenes/piedra.png"></div>
+            <div><img class="image" id="papelC" src="imagenes/papel.png"></div>
+            <div><img class="image" id="tijerasC" src="imagenes/tijeras.png"></div>
+            <div><img class="image" id="lagartoC" src="imagenes/lagarto.png"></div>
+            <div><img class="image" id="spockC" src="imagenes/spock.png"></div>
+        </div>
+    </main>
 </body>
 </html>

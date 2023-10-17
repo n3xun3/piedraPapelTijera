@@ -22,39 +22,39 @@ const sistema = "";
 // Definir un objeto que mapea las combinaciones y resultados
 const resultados = {
   piedra: {
-    piedra: "EMPATE",
-    papel: "PERDISTE",
-    tijeras: "GANASTE",
-    lagarto: "GANASTE",
-    spock: "PERDISTE",
+    piedraC: "EMPATE",
+    papelC: "PERDISTE",
+    tijerasC: "GANASTE",
+    lagartoC: "GANASTE",
+    spockC: "PERDISTE",
   },
   papel: {
-    piedra: "GANASTE",
-    papel: "EMPATE",
-    tijeras: "PERDISTE",
-    lagarto: "PERDISTE",
+    piedraC: "GANASTE",
+    papelC: "EMPATE",
+    tijerasC: "PERDISTE",
+    lagartoC: "PERDISTE",
     spock: "GANASTE",
   },
   tijeras: {
-    piedra: "PERDISTE",
-    papel: "GANASTE",
-    tijeras: "EMPATE",
-    lagarto: "GANASTE",
-    spock: "PERDISTE",
+    piedraC: "PERDISTE",
+    papelC: "GANASTE",
+    tijerasC: "EMPATE",
+    lagartoC: "GANASTE",
+    spockC: "PERDISTE",
   },
   lagarto: {
-    piedra: "PERDISTE",
-    papel: "GANASTE",
-    tijeras: "PERDISTE",
-    lagarto: "EMPATE",
-    spock: "GANASTE",
+    piedraC: "PERDISTE",
+    papelC: "GANASTE",
+    tijerasC: "PERDISTE",
+    lagartoC: "EMPATE",
+    spockC: "GANASTE",
   },
   spock: {
-    piedra: "GANASTE",
-    papel: "PERDISTE",
-    tijeras: "GANASTE",
-    lagarto: "PERDISTE",
-    spock: "EMPATE",
+    piedraC: "GANASTE",
+    papelC: "PERDISTE",
+    tijerasC: "GANASTE",
+    lagartoC: "PERDISTE",
+    spockC: "EMPATE",
   },
 };
 
@@ -63,7 +63,7 @@ const resultados = {
 //3ª Al clicar en el dibujo se debe marcar, pintar en resultado y al mismo tiempo lanzar random del PC y pintar lo que salgas
 //4º Pintar el resultado de esa ronda GANADO, EMPATE, PERDIDO✅
 //5º cada vicrtoria se debe sumar en un contador para controlar el resultado ( se peude poner un máximo y al llegar Poner VICTORIA y resetear auto(opcional))
-//6º Boton reset reseteara todos los inputs
+//6º Boton reset reseteara todos los inputs✅
 
 function inicializarVariables(){
 	inputName = document.getElementById("inputName");
@@ -73,22 +73,23 @@ function inicializarVariables(){
 	inputResult = document.getElementById("inputResult");
 	inputResponse = document.getElementById("inputResponse");
 	inputPointer = document.getElementById("inputPointer");
-	player = document.getElementById("player");
 	labelName = document.getElementById("labelName");
 	inputResolution = document.getElementById("resolucion");
-	result = document.getElementById("result");
-	computer = document.getElementById("computer");
 	resetPlay = document.getElementById("resetPlay");
+	
+	player = document.getElementById("column1");
+	result = document.getElementById("column2");
+	computer = document.getElementById("column3");
 }
 
 // Escribimos nombre del Jugador en centro de la pantalla
 function writeName(){
 	labelName.textContent  = inputName.value;
-	player.style.display = "block";
-	result.style.display = "block";
-	computer.style.display = "block";
-	resetPlay.style.display = "block";
+	player.classList.remove("bloqueado");
+	result.classList.remove("bloqueado");
+	computer.classList.remove("bloqueado");
 	playButton.style.display = "none";
+	resetPlay.style.display = "block";
 }
 
 // Listeners que queremos cargar al cargar la pagina
@@ -97,14 +98,21 @@ function setListeners(){
 	playButton.addEventListener("click", writeName);
 }
 
+function getComputerChoice() {
+    const choices = ['piedraC', 'papelC', 'tijeraC', 'lagartoC', 'spockC'];
+    const randomIndex = Math.floor(Math.random() * 5);
+    return choices[randomIndex];
+}
+
 // Resetamos imagen para volver hacer click en otra y seguir jugando
-function resetImage(imagenDiv, sistema, usuario){
+function resetImage(imagenDiv, imagenDivD, sistema, usuario){
 	// Obtener el resultado y mostrarlo en el elemento "resolucion"
 	const resultado = resultados[sistema][usuario];
 	const solucion = document.getElementById("resolucion");
 
-	solucion.innerText += resultado;
+	solucion.innerText = resultado;
 	imagenDiv.innerHTML = '';
+	imagenDivD.innerHTML = '';
 }
 
 // Input donde introducimos el nombre del player
@@ -121,34 +129,41 @@ window.addEventListener("input", ()=>{
 window.addEventListener("load",()=>{
 	inicializarVariables();
 	setListeners();
-	player.style.display = "none";
-	result.style.display = "none";
-	computer.style.display = "none";
+	player.classList.add("bloqueado");
+	result.classList.add("bloqueado");
+	computer.classList.add("bloqueado");
 	playButton.disabled = true;
 	resetPlay.style.display = "none";
 });
 
 window.addEventListener("click", (e)=> {
 	let imagenCopia;
-	console.log(e.target);
+	
 	if(e.target.localName === "img"){
+		const selectComputer = getComputerChoice();
+		console.log(selectComputer);
 		const ButtonSelectPlayer = document.getElementById(e.target.id);
-		const imagenDiv = document.getElementById('cajaIzquierda');
+		const ButtonSelectComputer = document.getElementById(selectComputer);
+		const imagenDiv = document.getElementById('humano');
+		const imagenDivD = document.getElementById('ordenadorOpcion');
 		// Obtiene la imagen del botón
-    	const imagen = ButtonSelectPlayer.querySelector('img');
-
+    	const imagen = ButtonSelectPlayer;
+		const imagenC = ButtonSelectComputer;
     	// Crea una copia de la imagen
-		if(imagen){
+		if(imagen && imagenC){
 			imagenCopia = imagen.cloneNode(true);
+			imagenCopiaC = imagenC.cloneNode(true);
 			// Limpia el contenido actual del segundo div
 			imagenDiv.innerHTML = '';
+			imagenDivD.innerHTML = '';
 	
 			// Agrega la copia de la imagen al segundo div
 			imagenDiv.appendChild(imagenCopia);
-		
+			imagenDivD.appendChild(imagenCopiaC);
+			
 			setTimeout(() => {
-				resetImage(imagenDiv,e.target.id,"piedra");
-			}, 5000);
+				resetImage(imagenDiv, imagenDivD, e.target.id,selectComputer);
+			}, 3000);
 		}
 	
 	}
