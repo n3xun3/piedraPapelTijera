@@ -1,4 +1,11 @@
 /* Estilos para el cuerpo de la página */
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,15 +13,18 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: center; /* Centrar el contenido horizontalmente */
-    justify-content: center; /* Centrar el contenido verticalmente */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 /* Estilos para el contenido principal (columnas) */
 main {
     display: flex;
+    flex: 1; /* Permite que el contenido principal se expanda para llenar el espacio */
+    width: 100%;
     justify-content: space-between;
-    width: 100%; /* El 80% para la sección principal */
+    align-items: center; /* Centrar verticalmente */
 }
 
 .column {
@@ -26,16 +36,50 @@ main {
 }
 
 #column1, #column3 {
-    width: 20%; /* El 20% para las columnas laterales */
+    width: 20%;
     background-color: grey;
 }
 
 #column2 {
-    flex: 4; /* El 80% para la columna central */
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+}
+
+#contentDiv {
+    flex: 1; /* Permite que el contenidoDiv se expanda para llenar el espacio */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#buttonDiv {
+    flex: 1; /* Permite que el buttonDiv se expanda para llenar el espacio */
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#resolucion, #humano, #ordenadorOpcion, #resetPlay, #contadorPlayer, #guion, #contadorComputer {
+    margin: 10px; /* Añade espacio entre los elementos dentro de los divs */
 }
 
 #contadorPlayer, #contadorComputer, #guion {
     font-size: 90px !important;
+}
+
+#humano, #ordenadorOpcion {
+    background-color: transparent !important;
+    width: 140px;
+    height: 140px;
+    border: none; /* Agrega un borde para que sean visibles */
 }
 
 /* Estilos para el encabezado y pie de página */
@@ -47,22 +91,40 @@ header {
     width: 100%; /* Ancho completo para el encabezado y pie de página */
 }
 
-.image{
-	height: 130px;
+img {
+    padding: 5px;
+    height: 130px;
 	width: 130px;
-	border-radius: 50px;
-	align-items: center;
-}
+    transition: all 0.3s; /* Agrega una transición suave */
+  }
+
+  /* Estilo cuando el cursor pasa por encima de la imagen */
+  img:hover {
+    width: 180px;
+    height: 180px;
+  }
 
 .content{
-	height: 130px;
-	width: 130px;
-	border-radius: 10px;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    background-color: transparent !important; /* Establece el fondo como transparente */
+    border: none; /* Agrega un borde para que sea visible */
+    padding: 10px 20px; /* Ajusta el relleno según tus necesidades */
+}
+
+.containerImage{
+    display: flex; /* Utiliza flexbox para alinear contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    cursor: pointer;
+    border-radius: 80px;
 }
 
 .bloqueado {
     pointer-events: none; /* Evita eventos del ratón */
     background-color: #ccc; /* Cambia el color de fondo */
+}
+
+.containerImage.selected{
+    background-color: gainsboro
 }

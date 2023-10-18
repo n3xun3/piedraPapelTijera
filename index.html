@@ -18,29 +18,32 @@
     <main>
         <div class="column" id="column1">
             <h2 id="labelName">Jugador</h2>
-            <div><img class="image" id="piedra" src="imagenes/piedra.png"></div>
-            <div><img class="image" id="papel" src="imagenes/papel.png"></div>
-            <div><img class="image" id="tijeras" src="imagenes/tijeras.png"></div>
-            <div><img class="image" id="lagarto" src="imagenes/lagarto.png"></div>
-            <div><img class="image" id="spock" src="imagenes/spock.png"></div>
-
+            <div><img id="piedra" src="imagenes/piedra.png"></div>
+            <div><img id="papel" src="imagenes/papel.png"></div>
+            <div><img id="tijera" src="imagenes/tijera.png"></div>
+            <div><img id="lagarto" src="imagenes/lagarto.png"></div>
+            <div><img id="spock" src="imagenes/spock.png"></div>
         </div>
 
         <div class="column" id="column2">
-            <button type="button" id="resetPlay">RESET</button>
-            <button class="content" id="humano"></button>
-            <button class="content" id="ordenadorOpcion"></button>
-            <h3 id="resolucion"></h3>
-            <span id="contadorPlayer">0 </span><span id="guion">-</span><span id="contadorComputer"> 0</span>
+            <div class="content" id="contentDiv">
+                <h3 id="resolucion"></h3>
+                <button class="bloqueado" id="humano"></button>
+                <img class="bloqueado" src="imagenes/vs.jpg" alt="">
+                <button class="bloqueado" id="ordenadorOpcion"></button>
+            </div>
+            <div class="content" id="buttonDiv">
+                <span id="contadorPlayer">0</span><span id="guion">-</span><span id="contadorComputer">0</span>
+            </div>
         </div>
 
         <div class="column" id="column3">
             <h2>Ordenador</h2>
-            <div><img class="image" id="piedraC" src="imagenes/piedra.png"></div>
-            <div><img class="image" id="papelC" src="imagenes/papel.png"></div>
-            <div><img class="image" id="tijerasC" src="imagenes/tijeras.png"></div>
-            <div><img class="image" id="lagartoC" src="imagenes/lagarto.png"></div>
-            <div><img class="image" id="spockC" src="imagenes/spock.png"></div>
+            <div><img id="piedraC" src="imagenes/piedra.png"></div>
+            <div><img id="papelC" src="imagenes/papel.png"></div>
+            <div><img id="tijerasC" src="imagenes/tijera.png"></div>
+            <div><img id="lagartoC" src="imagenes/lagarto.png"></div>
+            <div><img id="spockC" src="imagenes/spock.png"></div>
         </div>
     </main>
 </body>
