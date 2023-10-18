@@ -133,3 +133,22 @@ img {
     font-family: Amatic SC;
     font-size: 100px;
 }
+
+.confeti {
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    position: absolute;
+    border-radius: 50%;
+    animation: confeti-fall 4s linear infinite;
+    transform: translateY(-100vh); /* Nueva posición inicial desde la parte superior */
+}
+
+@keyframes confeti-fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}

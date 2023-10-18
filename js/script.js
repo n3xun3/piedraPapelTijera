@@ -169,6 +169,7 @@ function resetImage(imagenDiv, imagenDivD, sistema, usuario) {
 	  solucion.classList.add("titulosResultado");	
 	  solucion.innerText = resultado;
 	  if(resultado === "GANASTE"){
+			lanzarConfeti(100);
 			miAudio.currentTime = 6;
 			miAudio.play();
 		} else if(resultado === "PERDISTE"){
@@ -207,4 +208,32 @@ function contador(resultado){
 	}
 	contadorPlayer.textContent = resultUsuario;
 	contadorComputer.textContent = resultSitema;
+}
+
+function lanzarConfeti(cantidad) {
+    const container = document.body;
+    const fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < cantidad; i++) {
+        const confeti = document.createElement("div");
+        confeti.className = "confeti";
+        fragment.appendChild(confeti);
+    }
+
+    container.appendChild(fragment);
+
+    const confetiElements = document.querySelectorAll(".confeti");
+
+    confetiElements.forEach((confeti, index) => {
+        const delay = Math.random() * 5;
+        confeti.style.animation = `confeti-fall 4s linear ${delay}s infinite`;
+
+        confeti.style.left = `${Math.random() * 100}vw`;
+        confeti.style.opacity = Math.random();
+		confeti.style.display = "block";
+        // Después de un tiempo, eliminar el confeti
+        setTimeout(() => {
+            container.removeChild(confeti);
+        }, 4000); // Cambia el valor (en milisegundos) según lo que consideres apropiado
+    });
 }
