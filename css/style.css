@@ -27,14 +27,19 @@ main {
 
 #column1, #column3 {
     width: 20%; /* El 20% para las columnas laterales */
+    background-color: grey;
 }
 
 #column2 {
     flex: 4; /* El 80% para la columna central */
 }
 
+#contadorPlayer, #contadorComputer, #guion {
+    font-size: 90px !important;
+}
+
 /* Estilos para el encabezado y pie de página */
-header, footer {
+header {
     background-color: #333;
     color: white;
     text-align: center;
@@ -47,6 +52,14 @@ header, footer {
 	width: 130px;
 	border-radius: 50px;
 	align-items: center;
+}
+
+.content{
+	height: 130px;
+	width: 130px;
+	border-radius: 10px;
+    align-items: center;
+    justify-content: center; 
 }
 
 .bloqueado {
