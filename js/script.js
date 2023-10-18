@@ -113,6 +113,7 @@ function setListeners(){
 			const imagenC = ButtonSelectComputer;
 			// Crea una copia de la imagen
 			if(imagen && imagenC){
+				ButtonSelectComputer.style.background = "#F9F9F9";
 				imagenCopia = imagen.cloneNode(true);
 				imagenCopiaC = imagenC.cloneNode(true);
 				// Limpia el contenido actual del segundo div
@@ -124,7 +125,8 @@ function setListeners(){
 				imagenDivD.appendChild(imagenCopiaC);
 				setTimeout(() => {
 					resetImage(imagenDiv, imagenDivD, e.target.id, selectComputer);
-				}, 500);
+					ButtonSelectComputer.style.background = "#808080";
+				}, 800);
 			}
 		
 		}
