@@ -128,3 +128,8 @@ img {
 .containerImage.selected{
     background-color: gainsboro
 }
+
+.titulosResultado {
+    font-family: Amatic SC;
+    font-size: 100px;
+}

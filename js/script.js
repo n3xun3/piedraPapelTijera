@@ -17,6 +17,11 @@ let resultUsuario = 0;
 let resultSitema = 0;
 const contadorPlayer = document.getElementById("contadorPlayer");
 const contadorComputer = document.getElementById("contadorComputer");
+const miAudio = document.getElementById("miAudio");
+const error = document.getElementById("error");
+const empate = document.getElementById("empate");
+const solucion = document.getElementById("resolucion");
+const imgElement = document.createElement("img"); 
 // Definir un objeto que mapea las combinaciones y resultados
 const resultados = {
 		piedra: {
@@ -135,14 +140,18 @@ function blockWindow(){
 
 // Escribimos nombre del Jugador en centro de la pantalla
 function writeName(){
-	resultUsuario = 0;
-	contadorPlayer.textContent = 0;
-	resultSitema = 0;
-	contadorComputer.textContent = 0;	
-	labelName.textContent  = inputName.value;
-	player.classList.remove("bloqueado");
-	result.classList.remove("bloqueado");
-	inputName.value = "";
+	if(inputName.value !== ""){
+		resultUsuario = 0;
+		contadorPlayer.textContent = 0;
+		resultSitema = 0;
+		contadorComputer.textContent = 0;	
+		labelName.textContent  = inputName.value;
+		player.classList.remove("bloqueado");
+		result.classList.remove("bloqueado");
+		inputName.value = "";
+	} else {
+		alert("Debe introducir un bombre para poder jugar!!!!.");
+	}
 }
 
 function getComputerChoice() {
@@ -154,11 +163,19 @@ function getComputerChoice() {
 // Resetamos imagen para volver hacer click en otra y seguir jugando
 // Método para obtener el resultado de manera asincrónica
 function resetImage(imagenDiv, imagenDivD, sistema, usuario) {
-	const solucion = document.getElementById("resolucion");
 	const resultado = obtenerResultado(sistema, usuario);
-  
+
 	if (resultado !== undefined) {
+	  solucion.classList.add("titulosResultado");	
 	  solucion.innerText = resultado;
+	  if(resultado === "GANASTE"){
+			miAudio.currentTime = 6;
+			miAudio.play();
+		} else if(resultado === "PERDISTE"){
+			error.play();
+		}else{
+			empate.play();
+		}
 	  limpiarResultado(solucion, imagenDiv, imagenDivD);
 	  contador(resultado);
 	} else {
@@ -178,7 +195,6 @@ function limpiarResultado(solucion, imagenDiv, imagenDivD) {
 	  solucion.innerText = "";
 	  imagenDiv.innerHTML = '';
 	  imagenDivD.innerHTML = '';
-	  divSeleccionado.classList.remove("selected");
 	}, 2000);
 }
 

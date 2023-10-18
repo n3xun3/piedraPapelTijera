@@ -18,6 +18,21 @@
     <main>
         <div class="column" id="column1">
             <h2 id="labelName">Jugador</h2>
+            <audio id="miAudio" preload="auto">
+                <source src="sonidos/un-banco_1.mp3" type="audio/mpeg">
+                <source src="sonidos/un-banco_1.mp3" type="audio/ogg">
+                Tu navegador no admite la reproducción de audio.
+            </audio>
+            <audio id="error" preload="auto">
+                <source src="sonidos/perder-incorrecto-no-valido.mp3" type="audio/mpeg">
+                <source src="sonidos/perder-incorrecto-no-valido.mp3" type="audio/ogg">
+                Tu navegador no admite la reproducción de audio.
+            </audio>
+            <audio id="empate" preload="auto">
+                <source src="sonidos/010704045_prev.mp3" type="audio/mpeg">
+                <source src="sonidos/010704045_prev.mp3" type="audio/ogg">
+                Tu navegador no admite la reproducción de audio.
+            </audio>
             <div><img id="piedra" src="imagenes/piedra.png"></div>
             <div><img id="papel" src="imagenes/papel.png"></div>
             <div><img id="tijera" src="imagenes/tijera.png"></div>
@@ -27,7 +42,7 @@
 
         <div class="column" id="column2">
             <div class="content" id="contentDiv">
-                <h3 id="resolucion"></h3>
+                <p id="resolucion" class="titulosResultado"></p>
                 <button class="bloqueado" id="humano"></button>
                 <img class="bloqueado" src="imagenes/vs.jpg" alt="">
                 <button class="bloqueado" id="ordenadorOpcion"></button>
