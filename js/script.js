@@ -7,7 +7,6 @@ let inputName,
     selectPlayer,
     player,
     computer,
-    inputResolution,
 	rutas = ["imagenes/piedra.png", "imagenes/papel.png","imagenes/tijera.png", "imagenes/lagarto.png", "imagenes/spock.png"];
 // Obtiene las selecciones del usuario y del sistema
 let divSeleccionado = null; // Almacena el div seleccionado
@@ -77,7 +76,6 @@ function inicializarVariables(){
 	inputResponse = document.getElementById("inputResponse");
 	inputPointer = document.getElementById("inputPointer");
 	labelName = document.getElementById("labelName");
-	inputResolution = document.getElementById("resolucion");
 	
 	player = document.getElementById("column1");
 	result = document.getElementById("column2");
